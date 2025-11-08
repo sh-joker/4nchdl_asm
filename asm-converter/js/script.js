@@ -85,7 +85,7 @@ const EXPLANATION = [
     '@ \';\'以降の記述はすべてコメントとして除外'
 ]
 
-let opcodes = ISA_CPU_15;  // set ISA
+let opcodes = ISA_CPU15;  // set ISA
 
 let ARCH_BITS = (Object.values(opcodes)[0].length == 5)? 16 : 15;
 const REG_BITS = 3;
@@ -482,3 +482,4 @@ function hex2MIF(hexList) {
 function readLines(string) { return string.toUpperCase().split(/\r?\n|\r/); }
 
 function splitAsm(asmString) { return asmString.replaceAll(",", " ").split(/\s+/).map(asm => asm.trim()) }
+
