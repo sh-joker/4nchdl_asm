@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM-FOR-HDL</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @media (min-width: 992px) {
+            body {
+                height: 100vh;
+            }
+            #content {
+                height: 100%;
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #content, .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guide {
+            padding: 0 1.5%;
+            height: 6rem;
+            max-width: 100%;
+        }
+
+        textarea {
+            flex-grow: 1;
+            min-height: 20rem;
+            width: 100%;
+        }
+
+        textarea:read-only {
+            background: rgb(232, 232, 232);
+        }
+    </style>
+</head>
+<body class="font-monospace min-vh-100 p-3">
+    <div id="content" class="container-fluid px-3">
+        <div>
+            <h2>4NCHDL 自作CPU用簡易アセンブラ</h2>
+            <a class="btn btn-sm btn-link mb-4" href="help.html">&gt; 注意事項を表示</a>
+        </div>
+        <div class="row flex-grow-1">
+            <div class="col col-6 mb-3 col-lg-3 mb-lg-0 border-start border-end">
+                <h4>[1]命令セット</h4>
+                <div class="guide">
+                    <p>直接入力 or CSVインポート</p>
+                    <!-- <p>オペコードのビット数は統一してください．（15bitアーキテクチャの場合は4bit，16bitの場合は5bit．）</p> -->
+                    <input class="form-control form-control-sm mt-0 mb-1" type="file" id="formFile">
+                </div>
+                <textarea id="inst-input" class="form-control" placeholder="MNEMONIC,OPCODE"></textarea>
+                <!-- <button class="btn btn-sm btn-secondary btn-copy">Copy</button> -->
+            </div>
+            <div class="col col-6 mb-3 col-lg-3 mb-lg-0 border-end">
+                <h4>[2]アセンブリ</h4>
+                <div class="guide">
+                    <p>初期値は入力サンプルです</p>
+                    <button id="btn-show-formats" class="btn btn-sm btn-link my-1">
+                        > 命令記法の詳細
+                    </button>
+                    <!-- <button id="btn-show-sample" class="btn btn-sm btn-secondary my-1">サンプルを入力</button> -->
+                </div>
+                <textarea id="asm-input" class="form-control" placeholder="ASSEMBLY-CODE"></textarea>
+            </div>
+            <div class="col col-6 col-lg-3 border-start border-end">
+                <h4>[3]バイナリ出力</h4>
+                <div class="guide">
+                    <p class="text-decoration-underline">出力オプション</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="enable-array">
+                        <label class="form-check-label" for="enable-array">
+                            VHDL用Array形式
+                        </label>
+                        <div class="form-check">  <!-- hidden -->
+                            <label class="form-check-label" for="n-words">
+                                配列長:
+                                <input type="text" id="n-words" value="64" style="width: 3em;" autocomplete="off">
+                            </label>
+                        </div>
+                        <div class="form-check invisible">  <!-- hidden -->
+                            <input class="form-check-input" type="checkbox" id="enable-comment" checked>
+                            <label class="form-check-label" for="enable-comment">
+                                コメントを表示
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <textarea id="bin-output" class="form-control" placeholder="BINARY-CODE" readonly></textarea>
+            </div>
+            <div class="col col-6 col-lg-3 border-end">
+                <h4>[4]HEX表現出力</h4>
+                <div class="guide">
+                    <!-- <p>※バイナリエラー時は出力なし</p> -->
+                    <p class="text-decoration-underline">出力オプション</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="enable-mif" checked>
+                        <label class="form-check-label" for="enable-mif">
+                            MIFファイル形式
+                        </label>
+                    </div>
+                </div>
+                <textarea id="hex-output" class="form-control" placeholder="HEX-CODE" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM-FOR-HDL</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        p, ul, ol {
+            margin: 0;
+        }
+
+        #content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        li:not(:last-child) {
+            margin-bottom: 0.25rem;
+        }
+
+        footer {
+            font-size: smaller;
+        }
+    </style>
+</head>
+<body class="font-monospace min-vh-100 p-3">
+    <div id="content" class="container-fluid px-5">
+        <div>
+            <h2>4NCHDL 自作CPU用簡易アセンブラ</h2>
+            <a class="btn btn-sm btn-link mb-4" href="index.html">&lt; 実行画面に戻る</a>
+        </div>
+        <div class="row h-100">
+            <h4>このツールについて</h4>
+            <div class="ms-3">
+                <p>このアセンブラは4NCプロジェクト "HDLによる論理回路設計" の一環として制作されました．</p>
+                <p>Intel製のFPGAを搭載した評価ボード(DE10-Lite) 上に構築するCPUアーキテクチャにおける開発補助ツールです．15/16bitアーキテクチャにのみ対応しています．</p>
+            </div>
+            
+            <h4 class="mt-4">つかいかた</h4>
+            <div class="ms-3">
+                <p>命令セットと変換したいアセンブリを入力することで機械語バイナリとHEXコードが出力されます．出力欄のテキストをコピーしてお使いください．</p>
+                <p>---</p>
+                <h5>命令語の入力について</h5>
+                <ul>
+                    <li><i>ニーモニック,オペコード</i> の順で定義してください．</li>
+                    <li>
+                        <p>命令語のビット長は統一が必要です．統一されていない命令セットは宣言できません．</p>
+                        <p>15bitアーキテクチャの場合は <b>4bit</b> に，16bitアーキテクチャの場合は <b>5bit</b> に統一してください．</p>
+                    </li>
+                    <li>
+                        <p>同一書式のCSVファイルをアップロードすることで命令一覧の変更が可能です．</p>
+                        <a class="btn btn-sm btn-link" href="instructions16.csv" download="instructions16.csv">16bit用サンプルファイルをダウンロード</a>
+                    </li>
+                </ul>
+            </div>
+
+            <h4 class="mt-4">その他注意事項</h4>
+            <div class="ms-3">
+                <ol>
+                    <li>PCやタブレットでの利用を推奨します．</li>
+                    <li>
+                        <p>以下の機能は含まれないため，生成された機械語の実行可否は保証しません．</p>
+                        <ul>
+                            <li>命令語の重複チェック</li>
+                            <li>アセンブリの構文チェック</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <hr>
+        <footer>author:22NC049, since:2025-06.</footer>
+    </div>
+</body>
+</html>
