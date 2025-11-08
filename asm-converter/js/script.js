@@ -17,7 +17,7 @@ const ISA_CPU15 = {
     "HLT": "1111",
 };
 
-const ISA_MAX_CPU = {
+const ISA_ORIGINAL = {
   "NOP": "00000",
   "MOV": "00001",
   "MOVL": "00010",
